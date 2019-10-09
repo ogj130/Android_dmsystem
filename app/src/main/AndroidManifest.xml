@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.myapplication101">
+
+    <uses-feature android:name="android.hardware.camera" /> <!-- 相机权限 -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 写入SD卡的权限：如果你希望保存相机拍照后的照片 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 读取SD卡的权限:打开相册选取图片所必须的权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="school Manage"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ewmsm"></activity>
+        <activity android:name=".dianming" />
+        <activity android:name=".paizhao" />
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".aboutPage" />
+        <activity android:name=".loginPage" />
+        <activity
+            android:name=".shangchuan"
+            android:label="点名" />
+        <activity
+            android:name=".findstudent"
+            android:label="查询学生信息" />
+        <activity
+            android:name=".adjuststudent"
+            android:label="修改学生信息" />
+        <activity
+            android:name=".addstudent"
+            android:label="添加学生信息" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

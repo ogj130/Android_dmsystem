@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item  android:id="@+id/about"  android:title="关于作者"/>
+    <item  android:id="@+id/quit"  android:title="返回"/>
+    <item android:id="@+id/item_deleteall" android:title="全部删除"></item>
+</menu>

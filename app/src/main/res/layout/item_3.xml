@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/student_image_3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:gravity="center_horizontal"
+        />
+
+    <TextView
+        android:id="@+id/tv_item_id_3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="ID"
+        android:textColor="#0000ff"
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:id="@+id/tv_item_name_3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="姓名"
+        android:textColor="#0000ff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_item_phone_3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="联系"
+        android:textColor="#0000ff"
+        android:textSize="18sp" />
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/falt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_weight="0.4"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        />
+</LinearLayout>
