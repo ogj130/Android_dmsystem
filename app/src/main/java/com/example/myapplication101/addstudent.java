@@ -61,11 +61,34 @@ public class addstudent extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        final LayoutInflater inflater=addstudent.this.getLayoutInflater();
+        final View view2=inflater.inflate(R.layout.yanzheng,null,false);
+        Context mContext=addstudent.this;
+        AlertDialog.Builder builder=new AlertDialog.Builder(mContext);
+        builder.setView(view2);
+        builder.setCancelable(false);
+        final AlertDialog alert=builder.create();
+
+        view2.findViewById(R.id.qd).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText editText=view2.findViewById(R.id.mm);
+                if(editText.getText().toString().trim().equals("123456")){
+                    Toast.makeText(getApplicationContext(),"验证成功!正在删除",Toast.LENGTH_SHORT).show();
+                    dao.deleteAll();
+                    Toast.makeText(getApplicationContext(),"删除全部数据成功", Toast.LENGTH_SHORT).show();
+                    lv.setAdapter(new MyAdapter());
+                    alert.dismiss();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"验证失败",Toast.LENGTH_SHORT).show();
+                    alert.dismiss();
+                }
+            }
+        });
         switch (item.getItemId()) {
             case R.id.item_deleteall:
-                dao.deleteAll();
-                Toast.makeText(this,"删除全部数据成功", Toast.LENGTH_SHORT).show();
-                lv.setAdapter(new MyAdapter());
+                alert.show();
                 break;
             case R.id.quit:
                 addstudent.this.finish();
@@ -81,6 +104,7 @@ public class addstudent extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     private void initView() {
         setContentView(R.layout.activity_addstudent);

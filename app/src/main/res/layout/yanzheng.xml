@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="222dp"
+        android:layout_gravity="center"
+        android:background="@drawable/search"
+        >
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="158dp"
+            android:layout_marginBottom="155dp"
+            android:gravity="center|center_horizontal"
+            android:text="验证页面"
+            android:textColor="@color/red"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/mm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="81dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:hint="请输入root密码123456"/>
+
+        <Button
+            android:id="@+id/qd"
+            android:gravity="center_horizontal|center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="160dp"
+            android:layout_marginBottom="21dp"
+            android:background="@drawable/btn_chaxun"
+            android:text="确定" />
+
+    </RelativeLayout>
+</LinearLayout>
