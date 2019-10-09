@@ -18,7 +18,6 @@
         <activity android:name=".ewmsm"></activity>
         <activity android:name=".dianming" />
         <activity android:name=".paizhao" />
-        <activity android:name=".Main2Activity" />
         <activity android:name=".aboutPage" />
         <activity android:name=".loginPage" />
         <activity
