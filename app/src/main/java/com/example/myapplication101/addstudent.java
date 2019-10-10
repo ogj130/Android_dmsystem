@@ -16,11 +16,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,18 +34,32 @@ import com.example.myapplication101.StudentADB.StudentInfo;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class addstudent extends AppCompatActivity {
 
+    private String id;
+    private String name;
+    private String phone;
+    private String age;
+    private String banji;
+    private String major_na;
+    private String college_na;
+    private String sex="男";
+
+
     private EditText et_id;
     private EditText et_name;
     private EditText et_phone;
-    private EditText et_age;
     private EditText et_major_na;
     private EditText et_college_na;
-    private EditText et_sex;
-    private EditText et_banji;
+    private RadioGroup et_sex;
+
+    private Spinner et_banji;
+    private Spinner et_age;
+
+
     private ListView lv;
     private StudentDao dao;
     private ArrayList<EditText> edts;
@@ -104,20 +122,59 @@ public class addstudent extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    private List<String> delist1,delist2;
+    private ArrayAdapter<String> arrayAdapter1,arrayAdapter2;
+    private void Spinner_init(){
+        et_age = (Spinner) findViewById(R.id.spin_age);
+        et_banji= (Spinner) findViewById(R.id.spin_banji);
+        delist1=new ArrayList<String>();
+        delist2=new ArrayList<String>();
+        for(int i=1;i<50;i++){
+            delist1.add(String.valueOf(i)+"岁");
+        }
+        for(int i=1;i<4;i++){
+            delist2.add(String.valueOf(i)+"班");
+        }
+        arrayAdapter1=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,delist1);
+        arrayAdapter2=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,delist2);
 
+        arrayAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        arrayAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+        et_age.setAdapter(arrayAdapter1);
+        et_banji.setAdapter(arrayAdapter2);
+        et_age.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                age=delist1.get(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        et_banji.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                banji=delist2.get(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
     private void initView() {
         setContentView(R.layout.activity_addstudent);
-
         et_id = (EditText) findViewById(R.id.et_id);
         et_name = (EditText) findViewById(R.id.et_name);
         et_phone = (EditText) findViewById(R.id.et_phone);
-        et_age = (EditText) findViewById(R.id.et_age);
+        et_sex =(RadioGroup) findViewById(R.id.student_sex);
         et_college_na = (EditText) findViewById(R.id.et_college_na);
         et_major_na = (EditText) findViewById(R.id.et_major_na);
-        et_sex = (EditText) findViewById(R.id.et_sex);
-        et_banji= (EditText) findViewById(R.id.et_banji);
-
+        Spinner_init();
         lv = (ListView) findViewById(R.id.lv);
 
         dao = new StudentDao(this);
@@ -243,15 +300,19 @@ public class addstudent extends AppCompatActivity {
      * @param view
      */
     public void addStudent(View view) {
-        String id =  et_id.getText().toString().trim();
-        String name =  et_name.getText().toString().trim();
-        String phone =  et_phone.getText().toString().trim();
-        String age = et_age.getText().toString().trim();
-        String major_na = et_major_na.getText().toString().trim();
-        String college_na = et_college_na.getText().toString().trim();
-        String sex= et_sex.getText().toString().trim();
-        String banji=et_banji.getText().toString().trim();
-        if(id.equals("")||phone.equals("")||age.equals("")||major_na.equals("")||college_na.equals("")||sex.equals("")||banji.equals("")||name.equals("")){
+        id =  et_id.getText().toString().trim();
+        name =  et_name.getText().toString().trim();
+        phone =  et_phone.getText().toString().trim();
+        major_na = et_major_na.getText().toString().trim();
+        college_na = et_college_na.getText().toString().trim();
+        et_sex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton=(RadioButton) findViewById(checkedId);
+                sex= radioButton.getText().toString();
+            }
+        });
+        if(id.equals("")||phone.equals("")||major_na.equals("")||college_na.equals("")||sex.equals("")||name.equals("")){
             Toast.makeText(getApplicationContext(),"不能空余属性",Toast.LENGTH_SHORT).show();
         }
         else {
@@ -269,7 +330,7 @@ public class addstudent extends AppCompatActivity {
                     info.setName(name);
                     info.setSex(sex);
                     info.setPhone(phone);
-                    info.setAge(Integer.valueOf(age));
+                    info.setAge(Integer.valueOf(age.substring(0,age.length()-1)));
                     info.setBanji(banji);
                     info.setCollege_na(college_na);
                     info.setMajor_na(major_na);

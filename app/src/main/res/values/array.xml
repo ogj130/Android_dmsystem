@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spn_age">
+        <item>1岁</item>
+        <item>2岁</item>
+        <item>3岁</item>
+        <item>4岁</item>
+        <item>5岁</item>
+        <item>6岁</item>
+        <item>7岁</item>
+        <item>8岁</item>
+        <item>9岁</item>
+        <item>10岁</item>
+        <item>11岁</item>
+        <item>12岁</item>
+        <item>13岁</item>
+        <item>14岁</item>
+        <item>15岁</item>
+        <item>16岁</item>
+        <item>17岁</item>
+        <item>18岁</item>
+        <item>19岁</item>
+        <item>20岁</item>
+        <item>21岁</item>
+        <item>22岁</item>
+        <item>23岁</item>
+        <item>24岁</item>
+        <item>25岁</item>
+        <item>26岁</item>
+        <item>27岁</item>
+        <item>28岁</item>
+        <item>29岁</item>
+        <item>30岁</item>
+        <item>31岁</item>
+        <item>32岁</item>
+        <item>33岁</item>
+        <item>34岁</item>
+        <item>35岁</item>
+        <item>36岁</item>
+        <item>37岁</item>
+    </string-array>
+    <string-array name="spn_banji">
+        <item>1班</item>
+        <item>2班</item>
+        <item>3班</item>
+        <item>4班</item>
+    </string-array>
+</resources>

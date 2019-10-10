@@ -2,12 +2,15 @@ package com.example.myapplication101;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -17,6 +20,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +29,9 @@ import android.widget.Toast;
 import com.example.myapplication101.StudentADB.StudentDao;
 import com.example.myapplication101.StudentADB.StudentInfo;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,7 +47,10 @@ public class findstudent extends AppCompatActivity {
     private AlertDialog.Builder builder=null;
     private View view_bu;
 
-    private TextView stu_id,stu_name,stu_sex,stu_age,stu_banji,smajor_na,scollege_na,tel_number;
+    private EditText stu_id,stu_name,stu_sex,stu_age,stu_banji,smajor_na,scollege_na,tel_number;
+    private ImageView image_title;
+
+    private ArrayList<EditText> edts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,11 +79,12 @@ public class findstudent extends AppCompatActivity {
         alert=builder.create();
 
         // diag窗口控件 初始化
-        stu_id=(TextView) view_bu.findViewById(R.id.student_id);
+        stu_id=view_bu.findViewById(R.id.student_id);
         stu_name=view_bu.findViewById(R.id.student_name);
         stu_sex=view_bu.findViewById(R.id.student_sex);
         stu_age=view_bu.findViewById(R.id.student_age);
         stu_banji=view_bu.findViewById(R.id.student_banji);
+        image_title=view_bu.findViewById(R.id.student_image);
 
         smajor_na=view_bu.findViewById(R.id.student_major_name);
         scollege_na=view_bu.findViewById(R.id.student_college_name);
@@ -100,7 +112,9 @@ public class findstudent extends AppCompatActivity {
                         String major_na = select_student.get("student_major_na");
                         String college_na = select_student.get("student_college_na");
                         String student_age=select_student.get("student_age");
-
+                        if(select_student.get("touxiang_id")!=null&&!select_student.get("touxiang_id").equals("1")){
+                            image_title.setImageBitmap(getimage(select_student.get("touxiang_id")));
+                        }
                         stu_id.setText(student_id);
                         stu_name.setText(student_name);
                         stu_sex.setText(student_sex);
@@ -109,6 +123,18 @@ public class findstudent extends AppCompatActivity {
                         smajor_na.setText(major_na);
                         scollege_na.setText(college_na);
                         stu_age.setText(student_age);
+                        edts=new ArrayList<EditText>();
+                        edts.add(stu_id);
+                        edts.add(stu_name);
+                        edts.add(stu_sex);
+                        edts.add(stu_banji);
+                        edts.add(tel_number);
+                        edts.add(smajor_na);
+                        edts.add(scollege_na);
+                        edts.add(stu_age);
+                        setEdictale(false);
+                        view_bu.findViewById(R.id.bianyi).setVisibility(View.GONE);//隐藏
+                        view_bu.findViewById(R.id.bianyi).setEnabled(false);
                         alert.show();
                     }
                 }
@@ -184,6 +210,7 @@ public class findstudent extends AppCompatActivity {
             tv_item_name.setText(map.get("name"));
             tv_item_phone.setText(map.get("phone"));
 
+
             return view;
         }
 
@@ -196,5 +223,82 @@ public class findstudent extends AppCompatActivity {
         public long getItemId(int position) {
             return 0;
         }
+    }
+    //缩放
+    public Bitmap getimage(String srcPath){
+        BitmapFactory.Options newOpts = new BitmapFactory.Options();
+
+        //开始读入图片，此时把options.inJustDecodeBounds 设回true了
+        newOpts.inJustDecodeBounds = true;
+
+        //此时返回bm为空
+        Bitmap bitmap = BitmapFactory.decodeFile(srcPath, newOpts);
+
+        newOpts.inJustDecodeBounds = false;
+        int w = newOpts.outWidth;
+        int h = newOpts.outHeight;
+
+        //现在主流手机比较多是800*480分辨率，所以高和宽我们设置为
+        float hh = 800f;//这里设置高度为800f
+        float ww = 480f;//这里设置宽度为480f
+
+        //缩放比。由于是固定比例缩放，只用高或者宽其中一个数据进行计算即可
+        int be = 1;//be=1表示不缩放
+        if (w > h && w > ww) {
+            //如果宽度大的话根据宽度固定大小缩放
+            be = (int) (newOpts.outWidth / ww);
+        } else if (w < h && h > hh) {
+            //如果高度高的话根据宽度固定大小缩放
+            be = (int) (newOpts.outHeight / hh);
+        }
+        if (be <= 0) {
+            be = 1;
+        }
+
+        //设置缩放比例
+        newOpts.inSampleSize = be;
+
+        //重新读入图片，注意此时已经把options.inJustDecodeBounds 设回false了
+        bitmap = BitmapFactory.decodeFile(srcPath, newOpts);
+
+        //压缩好比例大小后再进行质量压缩
+        return compressImage(bitmap);
+    }
+    //质量压缩
+    public Bitmap compressImage(Bitmap image){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+        //质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
+        image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        int options = 100;
+        while (baos.toByteArray().length / 1024 > 300) {
+            //循环判断如果压缩后图片是否大于300kb,大于继续压缩
+            baos.reset();
+
+            //重置baos即清空baos
+            image.compress(Bitmap.CompressFormat.JPEG, options, baos);//这里压缩options%，把压缩后的数据存放到baos中
+
+            //每次都减少10
+            options -= 10;
+        }
+
+        //把压缩后的数据baos存放到ByteArrayInputStream中
+        ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());
+
+        //把ByteArrayInputStream数据生成图片
+        Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);
+        return bitmap;
+    }
+
+    private void setEdictale(boolean edictale){
+        edts.get(0).setEnabled(false);
+        for (int i = 1; i < edts.size(); i++) {  //id 不能修改
+            edts.get(i).setFocusable(edictale);
+            edts.get(i).setFocusableInTouchMode(edictale);
+            edts.get(i).setEnabled(edictale);
+        }
+        edts.get(1).setFocusable(true);
+        edts.get(1).setFocusableInTouchMode(true);
+        edts.get(1).requestFocus();
     }
 }

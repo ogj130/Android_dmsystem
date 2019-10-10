@@ -111,7 +111,6 @@ public class StudentDao {
         int falt=0;
         if(cursor.moveToFirst()){
             do{
-                falt=1;
                 String id=cursor.getString(cursor.getColumnIndex("studentid"));
                 String name=cursor.getString(cursor.getColumnIndex("name"));
                 String phone=cursor.getString(cursor.getColumnIndex("phone"));
@@ -122,6 +121,7 @@ public class StudentDao {
                 String college_na=cursor.getString(cursor.getColumnIndex("college_na"));
                 String touxiang_id=cursor.getString(cursor.getColumnIndex("touxiang_id"));
                 if(id.equals(stu_id)){
+                    falt=1;
                     result.put("student_id",id);
                     result.put("student_name",name);
                     result.put("student_phone",phone);

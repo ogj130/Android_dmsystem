@@ -9,12 +9,12 @@
     >
 
     <RelativeLayout
-        android:layout_width="396dp"
-        android:layout_height="346dp">
+        android:layout_width="393dp"
+        android:layout_height="318dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="326dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
@@ -22,7 +22,7 @@
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="0dp"
-            android:layout_marginBottom="0dp"
+            android:layout_marginBottom="20dp"
             android:orientation="vertical">
 
             <TextView
@@ -130,14 +130,14 @@
                             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                         <EditText
-                            android:background="@null"
-                            android:singleLine="true"
-                            android:textSize="14dp"
                             android:id="@+id/student_sex"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.5"
-                            android:text="空" />
+                            android:background="@null"
+                            android:singleLine="true"
+                            android:text="空"
+                            android:textSize="14dp" />
 
                     </LinearLayout>
 
@@ -155,14 +155,14 @@
                             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                         <EditText
-                            android:background="@null"
-                            android:singleLine="true"
-                            android:textSize="14dp"
                             android:id="@+id/student_age"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.5"
-                            android:text="空" />
+                            android:background="@null"
+                            android:singleLine="true"
+                            android:text="空"
+                            android:textSize="14dp" />
 
                     </LinearLayout>
 
@@ -180,14 +180,14 @@
                             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                         <EditText
-                            android:background="@null"
-                            android:singleLine="true"
-                            android:textSize="14dp"
                             android:id="@+id/student_banji"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.5"
-                            android:text="空" />
+                            android:background="@null"
+                            android:singleLine="true"
+                            android:text="空"
+                            android:textSize="14dp" />
 
                     </LinearLayout>
 
@@ -205,14 +205,14 @@
                             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                         <EditText
-                            android:background="@null"
-                            android:singleLine="true"
-                            android:textSize="14dp"
                             android:id="@+id/student_major_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.5"
-                            android:text="空" />
+                            android:background="@null"
+                            android:singleLine="true"
+                            android:text="空"
+                            android:textSize="14dp" />
 
                     </LinearLayout>
 
@@ -230,14 +230,14 @@
                             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                         <EditText
-                            android:background="@null"
-                            android:singleLine="true"
-                            android:textSize="14dp"
                             android:id="@+id/student_college_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.5"
-                            android:text="空" />
+                            android:background="@null"
+                            android:singleLine="true"
+                            android:text="空"
+                            android:textSize="14dp" />
 
                     </LinearLayout>
 
@@ -255,14 +255,14 @@
                             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                         <EditText
-                            android:background="@null"
-                            android:singleLine="true"
-                            android:textSize="14dp"
                             android:id="@+id/student_tel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.5"
-                            android:text="空" />
+                            android:background="@null"
+                            android:singleLine="true"
+                            android:text="空"
+                            android:textSize="14dp" />
 
                     </LinearLayout>
 

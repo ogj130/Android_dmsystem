@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/search"
+    android:windowSoftInputMode="adjustPan"
     tools:context=".findstudent">
     <com.example.myapplication101.TitleLayout
         android:layout_width="match_parent"
@@ -60,9 +61,8 @@
             <ListView
                 android:id="@+id/lv"
                 android:layout_width="match_parent"
-                android:layout_height="482dp"
-                android:layout_weight="1"
-                >
+                android:layout_height="251dp"
+                android:layout_weight="1">
 
             </ListView>
 
@@ -96,9 +96,9 @@
                     android:layout_alignBottom="@+id/find_tuichu"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginStart="63dp"
+                    android:layout_marginStart="67dp"
                     android:layout_marginTop="0dp"
-                    android:layout_marginEnd="260dp"
+                    android:layout_marginEnd="256dp"
                     android:layout_marginBottom="0dp"
                     android:background="@drawable/btn_chaxun"
                     android:text="确定" />
@@ -112,9 +112,9 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
                     android:layout_marginStart="259dp"
-                    android:layout_marginTop="1dp"
+                    android:layout_marginTop="22dp"
                     android:layout_marginEnd="64dp"
-                    android:layout_marginBottom="58dp"
+                    android:layout_marginBottom="37dp"
                     android:background="@drawable/btn_chaxun"
                     android:text="退出" />
             </RelativeLayout>

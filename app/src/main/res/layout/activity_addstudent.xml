@@ -53,123 +53,123 @@
 
     <ListView
         android:id="@+id/lv"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_width="421dp"
+        android:layout_height="244dp"
+
         android:background="@android:drawable/editbox_dropdown_light_frame" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:ems="10"
+                android:hint="输入数字,不要太长"
+                android:inputType="number"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:ems="10"
+                android:hint="输入姓名"
+                android:inputType="textPersonName"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:drawable/editbox_dropdown_light_frame"
+            android:ems="10"
+            android:hint="输入联系方式"
+            android:inputType="number"
+            android:textSize="14sp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <RadioGroup
+                android:id="@+id/student_sex"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                >
 
-                <EditText
-                    android:id="@+id/et_id"
-                    android:layout_width="0dp"
+                <RadioButton
+                    android:id="@+id/radioButton_sex_nan"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_weight="1"
+                    android:text="男" />
+
+                <RadioButton
+                    android:id="@+id/radioButton_sex_nv"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@android:drawable/editbox_dropdown_light_frame"
-                    android:ems="10"
-                    android:hint="输入数字,不要太长"
-                    android:inputType="number"
-                    android:textSize="10dp" />
-
-                <EditText
-                    android:id="@+id/et_name"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@android:drawable/editbox_dropdown_light_frame"
-                    android:ems="10"
-                    android:hint="输入姓名"
-                    android:inputType="textPersonName"
-                    android:textSize="10dp" />
-
-                <EditText
-                    android:id="@+id/et_phone"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@android:drawable/editbox_dropdown_light_frame"
-                    android:ems="10"
-                    android:hint="输入联系方式"
-                    android:inputType="number"
-                    android:textSize="10dp" />
-
-                <EditText
-                    android:id="@+id/et_sex"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@android:drawable/editbox_dropdown_light_frame"
-                    android:ems="10"
-                    android:hint="性别"
-                    android:inputType="text"
-                    android:textSize="10dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/et_age"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@android:drawable/editbox_dropdown_light_frame"
-                    android:ems="10"
-                    android:hint="输入年龄"
-                    android:inputType="number"
-                    android:textSize="10dp" />
-
-                <EditText
-                    android:id="@+id/et_college_na"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@android:drawable/editbox_dropdown_light_frame"
-                    android:ems="10"
-                    android:hint="输入学院名称"
-                    android:inputType="text"
-                    android:textSize="10dp" />
-
-                <EditText
-                    android:id="@+id/et_major_na"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@android:drawable/editbox_dropdown_light_frame"
-                    android:ems="10"
-                    android:hint="输入专业名称"
-                    android:inputType="text"
-                    android:textSize="10dp" />
-                <EditText
-                    android:id="@+id/et_banji"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@android:drawable/editbox_dropdown_light_frame"
-                    android:ems="10"
-                    android:hint="输入班级"
-                    android:inputType="text"
-                    android:textSize="10dp" />
-
-            </LinearLayout>
-
+                    android:text="女" />
+            </RadioGroup>
         </LinearLayout>
+
+        <Spinner
+            android:id="@+id/spin_age"
+            android:layout_width="206dp"
+            android:layout_height="35dp"
+            android:drawSelectorOnTop="true"
+            android:spinnerMode="dialog"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/et_college_na"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:drawable/editbox_dropdown_light_frame"
+            android:ems="10"
+            android:hint="输入学院名称"
+            android:inputType="text"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/et_major_na"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:drawable/editbox_dropdown_light_frame"
+            android:ems="10"
+            android:hint="输入专业名称"
+            android:inputType="text"
+            android:textSize="14sp" />
+
+        <Spinner
+            android:id="@+id/spin_banji"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:drawSelectorOnTop="true"
+            android:spinnerMode="dialog" />
 
     </LinearLayout>
 

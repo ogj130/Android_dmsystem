@@ -25,12 +25,14 @@
             android:label="点名" />
         <activity
             android:name=".findstudent"
-            android:label="查询学生信息" />
+            android:label="查询学生信息"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".adjuststudent"
             android:label="修改学生信息" />
         <activity
             android:name=".addstudent"
+            android:windowSoftInputMode="adjustPan"
             android:label="添加学生信息" />
         <activity android:name=".MainActivity">
             <intent-filter>
