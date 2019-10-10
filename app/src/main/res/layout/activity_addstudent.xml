@@ -53,8 +53,8 @@
 
     <ListView
         android:id="@+id/lv"
-        android:layout_width="421dp"
-        android:layout_height="244dp"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
 
         android:background="@android:drawable/editbox_dropdown_light_frame" />
 
@@ -76,7 +76,7 @@
                 android:layout_weight="1"
                 android:background="@android:drawable/editbox_dropdown_light_frame"
                 android:ems="10"
-                android:hint="输入数字,不要太长"
+                android:hint="输入数字,例如63170101"
                 android:inputType="number"
                 android:textSize="14sp" />
 
@@ -99,7 +99,7 @@
             android:layout_weight="1"
             android:background="@android:drawable/editbox_dropdown_light_frame"
             android:ems="10"
-            android:hint="输入联系方式"
+            android:hint="输入电话号码"
             android:inputType="number"
             android:textSize="14sp" />
 
@@ -110,19 +110,34 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="性别："
+                android:textSize="20sp" />
+
             <RadioGroup
                 android:id="@+id/student_sex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/radioButton_sex_nan"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:layout_weight="1"
+                    android:checked="true"
                     android:text="男" />
 
                 <RadioButton
@@ -134,24 +149,29 @@
             </RadioGroup>
         </LinearLayout>
 
-        <Spinner
-            android:id="@+id/spin_age"
-            android:layout_width="206dp"
-            android:layout_height="35dp"
-            android:drawSelectorOnTop="true"
-            android:spinnerMode="dialog"
-            android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/et_college_na"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@android:drawable/editbox_dropdown_light_frame"
-            android:ems="10"
-            android:hint="输入学院名称"
-            android:inputType="text"
-            android:textSize="14sp" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="35dp"
+                android:textSize="20sp"
+                android:text="年龄：" />
+
+            <Spinner
+                android:id="@+id/spin_age"
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="35dp"
+                android:drawSelectorOnTop="true"
+                android:spinnerMode="dialog"
+                android:textSize="20sp" />
+        </LinearLayout>
 
         <EditText
             android:id="@+id/et_major_na"
@@ -164,12 +184,39 @@
             android:inputType="text"
             android:textSize="14sp" />
 
-        <Spinner
-            android:id="@+id/spin_banji"
-            android:layout_width="200dp"
-            android:layout_height="35dp"
-            android:drawSelectorOnTop="true"
-            android:spinnerMode="dialog" />
+        <EditText
+            android:id="@+id/et_college_na"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:drawable/editbox_dropdown_light_frame"
+            android:ems="10"
+            android:hint="输入学院名称"
+            android:inputType="text"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="35dp"
+                android:textSize="20sp"
+                android:text="班级：" />
+
+            <Spinner
+                android:id="@+id/spin_banji"
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="35dp"
+                android:drawSelectorOnTop="true"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
 
     </LinearLayout>
 

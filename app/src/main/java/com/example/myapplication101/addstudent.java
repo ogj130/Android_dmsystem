@@ -343,6 +343,12 @@ public class addstudent extends AppCompatActivity {
                     if (result) {
                         Toast.makeText(this, "添加成功", Toast.LENGTH_SHORT).show();
                         lv.setAdapter(new MyAdapter());
+                        et_id.setText("");
+                        et_major_na.setText("");
+                        et_college_na.setText("");
+                        et_name.setText("");
+                        et_phone.setText("");
+
                     } else {
                         Toast.makeText(this, "添加失败", Toast.LENGTH_SHORT).show();
                     }
